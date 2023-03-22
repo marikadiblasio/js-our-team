@@ -1,10 +1,6 @@
 /**
  * Utilizzando i dati forniti, creare un array di oggetti per rappresentare i membri del team.
 Ogni membro è caratterizzato dalle seguenti informazioni: nome, ruolo e foto.
-
-
-BONUS 1:
-Trasformare la stringa foto in una immagine effettiva
 BONUS 2:
 Organizzare i singoli membri in card/schede
  */
@@ -46,7 +42,7 @@ const members = [
         name: 'Barbara',
         surname: 'Ramos',
         role: 'Graphic Designer',
-        image: 'barbars-ramos-graphic-designer.jpg'
+        image: 'barbara-ramos-graphic-designer.jpg'
     },
 ];
 //console.log(members);
@@ -59,16 +55,35 @@ const members = [
 // }
 //MILESTONE 2:
 //Stampare le stesse informazioni su DOM sottoforma di stringhe
+// for (let i = 0; i < members.length; i++){
+//     const divCard = document.createElement('div');
+//     const container = document.querySelector('.container');
+//     container.appendChild(divCard);
+//     let text;
+//     for (key in members[i]){
+//         text=`${key}: ${members[i][key]}`;
+//         const divText = document.createElement('div');
+//         divText.innerText = text;
+//         divCard.appendChild(divText);
+//         console.log(key +": "+ members[i][key])
+//     }
+// }
+//BONUS 1:
+//Trasformare la stringa foto in una immagine effettiva
 for (let i = 0; i < members.length; i++){
     const divCard = document.createElement('div');
+    //divCard.classList.add('d-flex');
     const container = document.querySelector('.container');
     container.appendChild(divCard);
     let text;
+    let image = `<img src="./img/${members[i].image}" alt="${members[i].image}">`;
+    divCard.innerHTML = image;
     for (key in members[i]){
         text=`${key}: ${members[i][key]}`;
         const divText = document.createElement('div');
-        divText.innerText = text;
+        divText.innerHTML = text;
         divCard.appendChild(divText);
         console.log(key +": "+ members[i][key])
     }
+    //divCard.innerHTML += image;
 }
