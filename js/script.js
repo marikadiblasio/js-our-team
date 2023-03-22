@@ -1,8 +1,7 @@
 /**
  * Utilizzando i dati forniti, creare un array di oggetti per rappresentare i membri del team.
 Ogni membro è caratterizzato dalle seguenti informazioni: nome, ruolo e foto.
-BONUS 2:
-Organizzare i singoli membri in card/schede
+
  */
 
 //MILESTONE 0:
@@ -17,7 +16,7 @@ const members = [
     {
         name: 'Angela',
         surname: 'Caroll',
-        role: 'chief Editor',
+        role: 'Chief Editor',
         image: 'angela-caroll-chief-editor.jpg'
     },
     {
@@ -45,6 +44,7 @@ const members = [
         image: 'barbara-ramos-graphic-designer.jpg'
     },
 ];
+//console.log(members[0].name)
 //console.log(members);
 //MILESTONE 1:
 //Stampare su console, per ogni membro del team, le informazioni di nome, ruolo e la stringa della foto
@@ -70,20 +70,27 @@ const members = [
 // }
 //BONUS 1:
 //Trasformare la stringa foto in una immagine effettiva
+//BONUS 2:
+//Organizzare i singoli membri in card/schede
 for (let i = 0; i < members.length; i++){
     const divCard = document.createElement('div');
-    //divCard.classList.add('d-flex');
-    const container = document.querySelector('.container');
+    divCard.classList.add('card', 'col-4');
+    const container = document.querySelector('.row');
     container.appendChild(divCard);
-    let text;
-    let image = `<img src="./img/${members[i].image}" alt="${members[i].image}">`;
-    divCard.innerHTML = image;
-    for (key in members[i]){
-        text=`${key}: ${members[i][key]}`;
+    const nameText = document.createElement('h5');
+    nameText.classList.add('text-center');
+    nameText.innerText =`${members[i].name} ${members[i].surname}`;
+    const roleText =document.createElement('h6');
+    roleText.classList.add('text-center');
+    roleText.textContent=`${members[i].role}`;
         const divText = document.createElement('div');
-        divText.innerHTML = text;
-        divCard.appendChild(divText);
+        divText.appendChild(nameText);
+        divText.appendChild(roleText);
+        divCard.classList.add('card-body');
+        let image = `<img class="img-top-card mb-3" src="./img/${members[i].image}" alt="${members[i].image}">`;
+        divCard.innerHTML += image;
+        divCard.appendChild(divText);   
+     for (key in members[i]){
         console.log(key +": "+ members[i][key])
     }
-    //divCard.innerHTML += image;
 }
